@@ -78,23 +78,37 @@
 		/obj/item/stock_parts/cell/gun/upgraded = 10,
 		/obj/item/stock_parts/cell/gun/sharplite = 10,
 		/obj/item/stock_parts/cell/gun/sharplite/plus = 10,
-		/obj/item/stock_parts/cell/gun/large = 10
 		)
 
 	voucher_items = list(
 		"E-Pistol - Disabler" = /obj/item/gun/energy/disabler,
 		"E-Pistol - Taser" = /obj/item/gun/energy/e_gun/advtaser,
-		"E-Pistol - NT-SL X26" = /obj/item/gun/energy/e_gun/e_old/mini,
 		"P-Pistol - 'Cryogelida'" = /obj/item/gun/energy/e_gun/plasmapistol_cryo,
 		"P-Pistol - 'Pyrogelida'" = /obj/item/gun/energy/e_gun/plasmapistol_fire,
 		"SMG - E-TAR" = /obj/item/gun/energy/e_gun/e_old/smg,
 		"E-Rifle- E-Gun" = /obj/item/gun/energy/e_gun/e_old,
-		"E-Rifle- Laser-Cannon" = /obj/item/gun/energy/lasercannon,
 		"E-Assault-Rifle - 'Hades'" = /obj/item/gun/energy/e_gun/e_old/hades,
 		"E-Shotgun - E-SG 500" = /obj/item/gun/energy/e_gun/e_old/iot,
 		"Ion-Rifle" = /obj/item/gun/energy/ionrifle,
 		"Ion-Carbine" = /obj/item/gun/energy/ionrifle/carbine
 	)
+/obj/machinery/vending/security/marine/debug/nanotrasen/rework
+	name = "\improper nanotrasen energy REWORKED gun vendor"
+	products = list(
+		/obj/item/gun_voucher/nanotrasen = 10,
+		/obj/item/stock_parts/cell/gun/mini = 10,
+		/obj/item/stock_parts/cell/gun = 10,
+		/obj/item/stock_parts/cell/gun/upgraded = 10,
+		/obj/item/stock_parts/cell/gun/large = 10
+		)
+
+	voucher_items = list(
+		"E-Pistol - X-26 'Ember" = /obj/item/gun/energy/e_gun/e_old/mini,
+		"E-SMG - X-39 'Sunbeam'" = /obj/item/gun/energy/e_gun/e_old/smg/sunbeam,
+		"E-HMG - AL-690 'Daybreak" = /obj/item/gun/energy/e_gun/e_old/emg,
+		"E-Marksman - L-211 'Parallax'" = /obj/item/gun/energy/e_gun/e_old/dmr,
+		"E-Marksman - AL-602 'Phoenix' Energy Cannon" = /obj/item/gun/energy/lasercannon,
+		"E-Shotgun - AL-370 'Blaze'" = /obj/item/gun/energy/e_gun/e_old/iot/blaze
 
 /obj/machinery/vending/security/marine/debug/nanotrasen/sharplite
 	name = "\improper nanotrasen sharplite gun vendor"
