@@ -130,6 +130,7 @@
 		/obj/item/gun_voucher = 10,
 		/obj/item/ammo_box/a357 = 10,
 		/obj/item/ammo_box/magazine/co9mm = 10,
+		/obj/item/ammo_box/magazine/m46_30_podium = 10,
 		/obj/item/ammo_box/magazine/m9mm_expedition = 10,
 		/obj/item/ammo_box/magazine/wt550m9 = 10,
 		/obj/item/ammo_box/magazine/gauss = 10,
@@ -139,12 +140,15 @@
 	voucher_items = list(
 		"Revolver - Unica" = /obj/item/gun/ballistic/revolver/rhino,
 		"Pistol - Advantage PS9 \"Challenger\"" = /obj/item/gun/ballistic/automatic/pistol/challenger,
+		"Pistol - VI PH46 Podium" = /obj/item/gun/ballistic/automatic/pistol/podium,
+		"Pistol - VI PHB Champion" = /obj/item/gun/ballistic/automatic/pistol/champion,
 		"SMG - WT-550" = /obj/item/gun/ballistic/automatic/smg/wt550,
+		"SMG - VI PD46 Resolution" = /obj/item/gun/ballistic/automatic/smg/resolution,
 		"SMG - Saber" = /obj/item/gun/ballistic/automatic/smg/skm_carbine/saber,
 		"SMG - Advantage SGL9 \"Expedition\"" = /obj/item/gun/ballistic/automatic/smg/expedition,
-		"SMG - Combat Shotgun" = /obj/item/gun/ballistic/shotgun/automatic/combat,
-		"Rifle - Prototype Gauss" = /obj/item/gun/ballistic/automatic/powered/gauss,
-
+		"Shotgun - Combat Shotgun" = /obj/item/gun/ballistic/shotgun/automatic/combat,
+		"Shotgun - VI AST12 Negotiator" = /obj/item/gun/ballistic/shotgun/automatic/negotiator,
+		"Rifle - Prototype Gauss" = /obj/item/gun/ballistic/automatic/powered/gauss
 	)
 
 /obj/machinery/vending/security/marine/debug/syndicate
