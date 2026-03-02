@@ -100,7 +100,7 @@
 		/obj/item/stock_parts/cell/gun = 10,
 		/obj/item/stock_parts/cell/gun/upgraded = 10,
 		/obj/item/stock_parts/cell/gun/large = 10
-		)
+	)
 
 	voucher_items = list(
 		"E-Pistol - X-26 'Ember" = /obj/item/gun/energy/e_gun/e_old/mini,
@@ -109,6 +109,7 @@
 		"E-Marksman - L-211 'Parallax'" = /obj/item/gun/energy/e_gun/e_old/dmr,
 		"E-Marksman - AL-602 'Phoenix' Energy Cannon" = /obj/item/gun/energy/lasercannon,
 		"E-Shotgun - AL-370 'Blaze'" = /obj/item/gun/energy/e_gun/e_old/iot/blaze
+	)
 
 /obj/machinery/vending/security/marine/debug/nanotrasen/sharplite
 	name = "\improper nanotrasen sharplite gun vendor"
@@ -135,7 +136,6 @@
 		/obj/item/ammo_box/magazine/wt550m9 = 10,
 		/obj/item/ammo_box/magazine/gauss = 10,
 	)
-
 
 	voucher_items = list(
 		"Revolver - Unica" = /obj/item/gun/ballistic/revolver/rhino,
