@@ -92,6 +92,7 @@
 		"Ion-Rifle" = /obj/item/gun/energy/ionrifle,
 		"Ion-Carbine" = /obj/item/gun/energy/ionrifle/carbine
 	)
+
 /obj/machinery/vending/security/marine/debug/nanotrasen/rework
 	name = "\improper nanotrasen energy REWORKED gun vendor"
 	products = list(
@@ -183,4 +184,45 @@
 		"HMG - SAW-80 \"Hydra\"" = /obj/item/gun/ballistic/automatic/assault/hydra/lmg,
 		"DMR - SBR-80 \"Hydra\"" = /obj/item/gun/ballistic/automatic/assault/hydra/dmr,
 		"Marksman - MSR-90 \"Boomslang\"" = /obj/item/gun/ballistic/automatic/marksman/boomslang,
+	)
+
+/obj/machinery/vending/security/marine/debug/inteq
+	name = "\improper inteq energy gun vendor"
+	icon_state = "marine"
+	icon_deny = "marine-deny"
+	light_mask = "marine-mask"
+	icon_vend = "marine-vend"
+	products = list(
+		/obj/item/gun_voucher = 10,
+		/obj/item/ammo_box/a357 = 10,
+		/obj/item/ammo_box/magazine/co9mm = 10,
+		/obj/item/ammo_box/magazine/m46_30_podium = 10,
+		/obj/item/ammo_box/magazine/m9mm_rattlesnake = 10,
+		/obj/item/ammo_box/magazine/m20_auto_elite = 10,
+		/obj/item/ammo_box/magazine/smgm10mm = 10,
+		/obj/item/ammo_box/magazine/wt550m9 = 10,
+		/obj/item/ammo_box/magazine/m12g_bulldog = 10,
+		/obj/item/ammo_box/magazine/skm_762_40 = 10,
+		/obj/item/ammo_box/magazine/rottweiler_308_box = 5,
+		/obj/item/ammo_box/magazine/g36 = 10,
+		/obj/item/ammo_box/magazine/f4_308 = 10,
+		/obj/item/ammo_box/magazine/f90 = 10,
+		/obj/item/stock_parts/cell/gun = 10,
+		)
+
+	voucher_items = list(
+		"Revolver - Horizon-X" = /obj/item/gun/ballistic/revolver/horizonx,
+		"Pistol - PS-03 Commissioner" = /obj/item/gun/ballistic/automatic/pistol/challenger/inteq,
+		"Pistol - P46 Schnauzer" = /obj/item/gun/ballistic/automatic/pistol/podium/inteq,
+		"Pistol - MP-84m Kingsnake" = /obj/item/gun/ballistic/automatic/pistol/rattlesnake/inteq,
+		"Pistol - PO-20 Pinscher" = /obj/item/gun/ballistic/automatic/pistol/m20_auto_elite/inteq,
+		"SMG - SKM-44v Mongrel" = /obj/item/gun/ballistic/automatic/smg/skm_carbine/inteq,
+		"SMG - BDM-50 Akita" = /obj/item/gun/ballistic/automatic/smg/resolution/inteq,
+		"Shothun - Mastiff" = /obj/item/gun/ballistic/shotgun/automatic/bulldog/inteq,
+		"Assault-Rifle - SKM-44" = /obj/item/gun/ballistic/automatic/assault/skm/inteq,
+		"Assault-Rifle - G36m" = /obj/item/gun/ballistic/automatic/assault/g36/inteq,
+		"HMG - KM-05 Rottweiler" = /obj/item/gun/ballistic/automatic/hmg/rottweiler,
+		"Marksman - SsG-04" = /obj/item/gun/ballistic/automatic/marksman/f4/inteq,
+		"Marksman - SSG-08 Saluki" = /obj/item/gun/ballistic/automatic/marksman/f90/inteq,
+		"E-SMG - " = /obj/item/gun/energy/e_gun/e_old/smg/sunbeam/inteq
 	)
