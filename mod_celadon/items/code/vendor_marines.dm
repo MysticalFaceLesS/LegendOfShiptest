@@ -99,7 +99,6 @@
 		"Ion-Carbine" = /obj/item/gun/energy/ionrifle/carbine,
 	)
 
-/* // Xom-ki
 /obj/machinery/vending/security/marine/debug/nanotrasen/rework
 	name = "\improper nanotrasen energy REWORKED gun vendor"
 	products = list(
@@ -118,7 +117,6 @@
 		"E-Marksman - AL-602 'Phoenix' Energy Cannon" = /obj/item/gun/energy/lasercannon,
 		"E-Shotgun - AL-370 'Blaze'" = /obj/item/gun/energy/e_gun/e_old/iot/blaze,
 	)
-*/
 
 /obj/machinery/vending/security/marine/debug/nanotrasen/sharplite
 	name = "\improper nanotrasen sharplite gun vendor"
@@ -287,7 +285,7 @@
 		"HMG - KM-05 Rottweiler" = /obj/item/gun/ballistic/automatic/hmg/rottweiler,
 		"Marksman - SsG-04" = /obj/item/gun/ballistic/automatic/marksman/f4/inteq,
 		"Marksman - SSG-08 Saluki" = /obj/item/gun/ballistic/automatic/marksman/f90/inteq,
-		//"E-SMG - " = /obj/item/gun/energy/e_gun/e_old/smg/sunbeam/inteq,	// Xom-ki
+		"E-SMG - " = /obj/item/gun/energy/e_gun/e_old/smg/sunbeam/inteq,
 		"P-Rifle - PP10 “Cadejo”" = /obj/item/gun/energy/sharplite/x12/inteq,
 		"P-Assault-Rifle - PP20 “Barghest" =/obj/item/gun/energy/sharplite/al655/inteq,
 	)
