@@ -1,0 +1,470 @@
+/obj/machinery/vending/security/marine/debug
+	all_items_free = TRUE
+	req_access = list(ACCESS_SECURITY)
+	products = list()
+	contraband = list()
+	premium = list()
+	voucher_items = list()
+
+/obj/machinery/vending/security/marine/debug/solfed
+	name = "\improper solfed sol-federation gun vendor"
+	desc = "A marine equipment vendor."
+	product_ads = "Please insert your marine voucher in the bottom slot."
+	icon_state = "solgov-marine"
+	icon_deny = "solgov-marine-deny"
+	light_mask = "solgov-marine-mask"
+
+	products = list(
+		/obj/item/gun_voucher = 10,
+		/obj/item/ammo_box/magazine/pistol556mm = 10,
+		/obj/item/ammo_box/amagpellet_claris = 10,
+		/obj/item/ammo_box/magazine/gauss = 10,
+		/obj/item/ammo_box/magazine/modelh = 10,
+		/obj/item/ammo_box/magazine/gar = 10,
+		)
+
+	voucher_items = list(
+		"Pistol - Pistole C" = /obj/item/gun/ballistic/automatic/pistol/solgov,
+		"Pistol - Model H" = /obj/item/gun/ballistic/automatic/powered/gauss/modelh,
+		"Rifle - Claris" = /obj/item/gun/ballistic/automatic/powered/gauss/claris,
+		"Rifle - Prototype Gauss" = /obj/item/gun/ballistic/automatic/powered/gauss,
+		"SMG - Solar 'GAR' Carbine" = /obj/item/gun/ballistic/automatic/powered/gauss/gar,
+		"Marksman - SSG-669C" = /obj/item/gun/ballistic/rifle/solgov,
+	)
+
+/*
+/obj/item/gun/ballistic/automatic/powered/gauss/modelh/suns
+/obj/item/gun/ballistic/automatic/powered/gauss/claris/suns
+/obj/item/gun/ballistic/automatic/powered/gauss/gar/suns
+/obj/item/gun/ballistic/automatic/pistol/solgov/old
+*/
+
+/obj/machinery/vending/security/marine/debug/solfed/cm
+	name = "\improper solfed colonial-marines gun vendor"
+	desc = "A marine equipment vendor."
+	product_ads = "Please insert your marine voucher in the bottom slot."
+	icon_state = "solgov-marine"
+	icon_deny = "solgov-marine-deny"
+	light_mask = "solgov-marine-mask"
+	products = list(
+		/obj/item/gun_voucher = 10,
+		/obj/item/ammo_box/magazine/cm357 = 10,
+		/obj/item/ammo_box/magazine/m9mm_cm70 = 10,
+		/obj/item/ammo_box/magazine/cm5_9mm = 10,
+		/obj/item/ammo_box/magazine/p16 = 10,
+		/obj/item/ammo_box/magazine/cm15_12g = 10,
+		/obj/item/ammo_box/magazine/skm_762_40 = 10,
+		/obj/item/ammo_box/magazine/cm40_762_40_box = 6,
+		/obj/item/ammo_box/magazine/f4_308 = 10,
+		/obj/item/ammo_box/magazine/f90 = 10,
+		/obj/item/ammo_box/a858 = 10,
+	)
+
+	voucher_items = list(
+		"Pistol - Pistole C" = /obj/item/gun/ballistic/automatic/pistol/cm357,
+		"Pistol - Model H" = /obj/item/gun/ballistic/automatic/pistol/cm70,
+		"Rifle - Claris" = /obj/item/gun/ballistic/automatic/smg/cm5,
+		"Rifle - Prototype Gauss" = /obj/item/gun/ballistic/automatic/assault/cm82,
+		"Shotgun - CM-15" = /obj/item/gun/ballistic/shotgun/cm15,
+		"Assault-Rifle - CM-24" = /obj/item/gun/ballistic/automatic/assault/skm/cm24,
+		"HMG - CM-40" = /obj/item/gun/ballistic/automatic/hmg/cm40,
+		"Marksman - CM-F4" = /obj/item/gun/ballistic/automatic/marksman/f4,
+		"Marksman - CM-F90" = /obj/item/gun/ballistic/automatic/marksman/f90,
+	)
+
+/obj/machinery/vending/security/marine/debug/nanotrasen
+	name = "\improper nanotrasen energy gun vendor"
+	icon_state = "nt-marine"
+	icon_deny = "nt-marine-deny"
+	light_mask = "nt-marine-mask"
+	icon_vend = "nt-marine-vend"
+	products = list(
+		/obj/item/gun_voucher/nanotrasen = 10,
+		/obj/item/stock_parts/cell/gun/mini = 10,
+		/obj/item/stock_parts/cell/gun = 10,
+		/obj/item/stock_parts/cell/gun/upgraded = 10,
+		)
+
+	voucher_items = list(
+		"E-Pistol - Disabler" = /obj/item/gun/energy/disabler,
+		"E-Pistol - Taser" = /obj/item/gun/energy/e_gun/advtaser,
+		"P-Pistol - 'Cryogelida'" = /obj/item/gun/energy/e_gun/plasmapistol_cryo,
+		"P-Pistol - 'Pyrogelida'" = /obj/item/gun/energy/e_gun/plasmapistol_fire,
+		"E-Pistol - Antique laser" = /obj/item/gun/energy/laser/captain,
+		"SMG - E-TAR" = /obj/item/gun/energy/e_gun/e_old/smg,
+		"E-Rifle- E-Gun" = /obj/item/gun/energy/e_gun/e_old,
+		"E-Assault-Rifle - 'Hades'" = /obj/item/gun/energy/e_gun/e_old/hades,
+		"E-Shotgun - E-SG 500" = /obj/item/gun/energy/e_gun/e_old/iot,
+		"Ion-Rifle" = /obj/item/gun/energy/ionrifle,
+		"Ion-Carbine" = /obj/item/gun/energy/ionrifle/carbine,
+	)
+
+/obj/machinery/vending/security/marine/debug/nanotrasen/rework
+	name = "\improper nanotrasen energy REWORKED gun vendor"
+	products = list(
+		/obj/item/gun_voucher/nanotrasen = 10,
+		/obj/item/stock_parts/cell/gun/mini = 10,
+		/obj/item/stock_parts/cell/gun = 10,
+		/obj/item/stock_parts/cell/gun/upgraded = 10,
+		/obj/item/stock_parts/cell/gun/large = 10,
+	)
+
+	voucher_items = list(
+		"E-Pistol - X-26 'Ember" = /obj/item/gun/energy/e_gun/e_old/mini,
+		"E-SMG - X-39 'Sunbeam'" = /obj/item/gun/energy/e_gun/e_old/smg/sunbeam,
+		"E-HMG - AL-690 'Daybreak" = /obj/item/gun/energy/e_gun/e_old/emg,
+		"E-Marksman - L-211 'Parallax'" = /obj/item/gun/energy/e_gun/e_old/dmr,
+		"E-Marksman - AL-602 'Phoenix' Energy Cannon" = /obj/item/gun/energy/lasercannon,
+		"E-Shotgun - AL-370 'Blaze'" = /obj/item/gun/energy/e_gun/e_old/iot/blaze,
+	)
+
+/obj/machinery/vending/security/marine/debug/nanotrasen/sharplite
+	name = "\improper nanotrasen sharplite gun vendor"
+	products = list(
+		/obj/item/gun_voucher/nanotrasen = 10,
+		/obj/item/stock_parts/cell/gun/sharplite = 10,
+		/obj/item/stock_parts/cell/gun/sharplite/plus = 10,
+		)
+
+	voucher_items = list(
+		"P-Pistol - SL X26 “Ohm”" = /obj/item/gun/energy/sharplite/x26,
+		"P-Pistol - SL X01 “Yari”" = /obj/item/gun/energy/sharplite/x01,
+		"P-Pistol - X11" = /obj/item/gun/energy/sharplite/x11,
+		"P-Rifle - SL L104" = /obj/item/gun/energy/laser/retro,
+		"P-Rifle - L305 “Rush”" = /obj/item/gun/energy/sharplite/l305,
+		"P-Rifle - SL X12 “Volt”" = /obj/item/gun/energy/sharplite/x12,
+		"P-Rifle - SL X46 “Amperage”" = /obj/item/gun/energy/sharplite/x46,
+		"P-Assault-Rifle - SL AL655 “Hades”" = /obj/item/gun/energy/sharplite/al655,
+		"P-SMG - L204 “Resistor”" = /obj/item/gun/energy/sharplite/l201/l204,
+		"P-Marksman - SL L201 “Surge”" = /obj/item/gun/energy/sharplite/l201,
+		"P-Marksman - SL L204 “Resistor”" = /obj/item/gun/energy/sharplite/l201/l204,
+		"P-Marksman - AL607 “Sarissa”" = /obj/item/gun/energy/sharplite/al607,
+	)
+
+/obj/machinery/vending/security/marine/debug/nanotrasen/sharplite
+	name = "\improper Hunters Pride gun vendor"
+	products = list(
+		/obj/item/gun_voucher = 10,
+		/obj/item/ammo_box/magazine/m45 = 10,
+		/obj/item/ammo_box/magazine/c44_firestorm_mag = 10,
+		/obj/item/ammo_box/magazine/internal/shot/winchester/pyre = 10,
+		/obj/item/ammo_box/magazine/illestren_a850r = 10,
+		/obj/item/ammo_box/magazine/invictus_308_mag = 10,
+		)
+
+	voucher_items = list(
+		"Revolver - HP Montagne" = /obj/item/gun/ballistic/revolver/montagne,
+		"Revolver - HP Ashhand" = /obj/item/gun/ballistic/revolver/ashhand,
+		"Revolver - HP Firebrand" = /obj/item/gun/ballistic/revolver/firebrand,
+		"Revolver - HP Shadow" = /obj/item/gun/ballistic/revolver/shadow,
+		"Revolver - HP Detective Special" = /obj/item/gun/ballistic/revolver/detective,
+		"Pistol - Candor" = /obj/item/gun/ballistic/automatic/pistol/candor,
+		"SMG - HP Firestorm" = /obj/item/gun/ballistic/automatic/smg/firestorm,
+		"Shotgun - double-barreled" = /obj/item/gun/ballistic/shotgun/doublebarrel,
+		"Shotgun - HP Brimstone" = /obj/item/gun/ballistic/shotgun/brimstone,
+		"Shotgun - HP Hellfire" = /obj/item/gun/ballistic/shotgun/hellfire,
+		"Shotgun - HP Conflagration" = /obj/item/gun/ballistic/shotgun/flamingarrow/conflagration,
+		"Shotgun - HP Huntsman" = /obj/item/gun/ballistic/shotgun/doublebarrel/twobore,
+		"Rifle - HP Illestren" = /obj/item/gun/ballistic/rifle/illestren,
+		"Rifle - HP Flaming Arrow" = /obj/item/gun/ballistic/shotgun/flamingarrow,
+		"Rifle - HP Absolution" = /obj/item/gun/ballistic/shotgun/flamingarrow/absolution,
+		"Rifle - HP Pyre" = /obj/item/gun/ballistic/shotgun/flamingarrow/pyre,
+		"Rifle - HP Beacon" = /obj/item/gun/ballistic/shotgun/doublebarrel/beacon,
+		"Marksman - Vickland" = /obj/item/gun/ballistic/automatic/marksman/vickland,
+		"Marksman - HP Scout" = /obj/item/gun/ballistic/rifle/scout,
+		"Marksman - HP Invictus" = /obj/item/gun/ballistic/automatic/assault/invictus,
+	)
+
+/obj/machinery/vending/security/marine/debug/nanotrasen/vi
+	name = "\improper nanotrasen VI gun vendor"
+
+	products = list(
+		/obj/item/gun_voucher = 10,
+		/obj/item/ammo_box/a357 = 10,
+		/obj/item/ammo_box/magazine/co9mm = 10,
+		/obj/item/ammo_box/magazine/m46_30_podium = 10,
+		/obj/item/ammo_box/magazine/m9mm_expedition = 10,
+		/obj/item/ammo_box/magazine/wt550m9 = 10,
+		/obj/item/ammo_box/magazine/gauss = 10,
+	)
+
+	voucher_items = list(
+		"Revolver - Unica" = /obj/item/gun/ballistic/revolver/rhino,
+		"Pistol - Advantage PS9 \"Challenger\"" = /obj/item/gun/ballistic/automatic/pistol/challenger,
+		"Pistol - VI PHB Champion" = /obj/item/gun/ballistic/automatic/pistol/champion,
+		"Pistol - VI PH46 Podium" = /obj/item/gun/ballistic/automatic/pistol/podium,
+		"SMG - WT-550" = /obj/item/gun/ballistic/automatic/smg/wt550,
+		"SMG - VI PD46 Resolution" = /obj/item/gun/ballistic/automatic/smg/resolution,
+		"SMG - Saber" = /obj/item/gun/ballistic/automatic/smg/skm_carbine/saber,
+		"SMG - Advantage SGL9 \"Expedition\"" = /obj/item/gun/ballistic/automatic/smg/expedition,
+		"Shotgun - Combat Shotgun" = /obj/item/gun/ballistic/shotgun/automatic/combat,
+		"Shotgun - VI AST12 Negotiator" = /obj/item/gun/ballistic/shotgun/automatic/negotiator,
+		"Rifle - Prototype Gauss" = /obj/item/gun/ballistic/automatic/powered/gauss,
+	)
+
+/obj/machinery/vending/security/marine/debug/syndicate
+	name = "\improper syndicate gun vendor"
+	icon_state = "syndicate-marine"
+	icon_deny = "syndicate-marine-deny"
+	light_mask = "syndicate-marine-mask"
+	icon_vend = "syndicate-marine-vend"
+
+	products = list(
+		/obj/item/gun_voucher = 10,
+		/obj/item/ammo_box/a357 = 10,
+		/obj/item/ammo_box/magazine/m10mm_ringneck = 10,
+		/obj/item/ammo_box/magazine/m57_39_asp = 10,
+		/obj/item/ammo_box/magazine/m9mm_rattlesnake = 10,
+		/obj/item/ammo_box/magazine/m10mm_cottonmouth = 10,
+		/obj/item/ammo_box/magazine/m22lr_himehabu = 10,
+		/obj/item/ammo_box/magazine/m57_39_sidewinder = 10,
+		/obj/item/ammo_box/magazine/m45_cobra = 10,
+		/obj/item/ammo_box/magazine/m12g_bulldog = 10,
+		/obj/item/ammo_box/magazine/m12g_bulldog/drum = 5,
+		/obj/item/ammo_box/magazine/m556_42_hydra/small = 10,
+		/obj/item/ammo_box/magazine/m556_42_hydra = 10,
+		/obj/item/ammo_box/magazine/m556_42_hydra/extended = 10,
+		/obj/item/ammo_box/magazine/m556_42_hydra/casket = 10,
+		/obj/item/ammo_box/magazine/boomslang/short = 10,
+		/obj/item/ammo_box/magazine/sniper_rounds = 5
+		)
+
+	voucher_items = list(
+		"Revolver - R-23 \"Viper\"" = /obj/item/gun/ballistic/revolver/viper,
+		"Pistol - PC-76 \"Ringneck\"" = /obj/item/gun/ballistic/automatic/pistol/ringneck,
+		"Pistol - BC-81 \"Asp\"" = /obj/item/gun/ballistic/automatic/pistol/asp,
+		"Pistol - MP-84 \"Rattlesnake\"" = /obj/item/gun/ballistic/automatic/pistol/rattlesnake,
+		"Pistol - MP-84m Cottonmouth" = /obj/item/gun/ballistic/automatic/pistol/rattlesnake/cottonmouth,
+		"Pistol - PC-81 \"Himehabu\"" = /obj/item/gun/ballistic/automatic/pistol/himehabu,
+		"SMG - CDW-81 \"Sidewinder\"" = /obj/item/gun/ballistic/automatic/smg/sidewinder,
+		"SMG - C-20r \"Cobra\"" = /obj/item/gun/ballistic/automatic/smg/cobra,
+		"Shotgun - SG-60r \"Bulldog\"" = /obj/item/gun/ballistic/shotgun/automatic/bulldog,
+		"Assault-Rifle - SMR-80 \"Hydra\"" = /obj/item/gun/ballistic/automatic/assault/hydra,
+		"HMG - SAW-80 \"Hydra\"" = /obj/item/gun/ballistic/automatic/assault/hydra/lmg,
+		"DMR - SBR-80 \"Hydra\"" = /obj/item/gun/ballistic/automatic/assault/hydra/dmr,
+		"Marksman - MSR-90 \"Boomslang\"" = /obj/item/gun/ballistic/automatic/marksman/boomslang,
+		"Marksman - AMR-83 \"Taipan\"" = /obj/item/gun/ballistic/automatic/marksman/taipan,
+		"Rocketlauncher - RR-86 \"Mako\"" = /obj/item/gun/ballistic/rocketlauncher/mako,
+	)
+
+/obj/machinery/vending/security/marine/debug/inteq
+	name = "\improper inteq energy gun vendor"
+	icon_state = "marine"
+	icon_deny = "marine-deny"
+	light_mask = "marine-mask"
+	icon_vend = "marine-vend"
+	products = list(
+		/obj/item/gun_voucher = 10,
+		/obj/item/ammo_box/a357 = 10,
+		/obj/item/ammo_box/magazine/co9mm = 10,
+		/obj/item/ammo_box/magazine/m46_30_podium = 10,
+		/obj/item/ammo_box/magazine/m9mm_rattlesnake = 10,
+		/obj/item/ammo_box/magazine/m20_auto_elite = 10,
+		/obj/item/ammo_box/magazine/smgm10mm = 10,
+		/obj/item/ammo_box/magazine/wt550m9 = 10,
+		/obj/item/ammo_box/magazine/m12g_bulldog = 10,
+		/obj/item/ammo_box/magazine/skm_762_40 = 10,
+		/obj/item/ammo_box/magazine/rottweiler_308_box = 5,
+		/obj/item/ammo_box/magazine/g36 = 10,
+		/obj/item/ammo_box/magazine/f4_308 = 10,
+		/obj/item/ammo_box/magazine/f90 = 10,
+		/obj/item/stock_parts/cell/gun = 10,
+		)
+
+	voucher_items = list(
+		"Revolver - Horizon-X" = /obj/item/gun/ballistic/revolver/horizonx,
+		"Pistol - PS-03 Commissioner" = /obj/item/gun/ballistic/automatic/pistol/challenger/inteq,
+		"Pistol - P46 Schnauzer" = /obj/item/gun/ballistic/automatic/pistol/podium/inteq,
+		"Pistol - MP-84m Kingsnake" = /obj/item/gun/ballistic/automatic/pistol/rattlesnake/inteq,
+		"Pistol - PO-20 Pinscher" = /obj/item/gun/ballistic/automatic/pistol/m20_auto_elite/inteq,
+		"SMG - SKM-44v Mongrel" = /obj/item/gun/ballistic/automatic/smg/skm_carbine/inteq,
+		"SMG - BDM-50 Akita" = /obj/item/gun/ballistic/automatic/smg/resolution/inteq,
+		"Shothun - Mastiff" = /obj/item/gun/ballistic/shotgun/automatic/bulldog/inteq,
+		"Assault-Rifle - SKM-44" = /obj/item/gun/ballistic/automatic/assault/skm/inteq,
+		"Assault-Rifle - G36m" = /obj/item/gun/ballistic/automatic/assault/g36/inteq,
+		"HMG - KM-05 Rottweiler" = /obj/item/gun/ballistic/automatic/hmg/rottweiler,
+		"Marksman - SsG-04" = /obj/item/gun/ballistic/automatic/marksman/f4/inteq,
+		"Marksman - SSG-08 Saluki" = /obj/item/gun/ballistic/automatic/marksman/f90/inteq,
+		"E-SMG - " = /obj/item/gun/energy/e_gun/e_old/smg/sunbeam/inteq,
+		"P-Rifle - PP10 “Cadejo”" = /obj/item/gun/energy/sharplite/x12/inteq,
+		"P-Assault-Rifle - PP20 “Barghest" =/obj/item/gun/energy/sharplite/al655/inteq,
+	)
+
+
+/obj/machinery/vending/security/marine/debug/serene
+	name = "\improper nanotrasen sharplite gun vendor"
+	products = list(
+		/obj/item/gun_voucher = 10,
+		/obj/item/ammo_box/magazine/m17 = 10,
+		/obj/item/ammo_box/magazine/m20_auto_elite = 10,
+		/obj/item/ammo_box/magazine/m12_sporter = 10,
+		/obj/item/ammo_box/magazine/m23 = 10,
+		/obj/item/ammo_box/magazine/m15 = 10,
+		/obj/item/ammo_box/magazine/internal/shot/buckmaster = 10,
+		)
+
+	voucher_items = list(
+		"Pistol - Model 17 \"Micro Target\"" = /obj/item/gun/ballistic/automatic/pistol/m17,
+		"Pistol - Model 20 \"Auto Elite\"" = /obj/item/gun/ballistic/automatic/pistol/m20_auto_elite,
+		"Rifle - Model 12 \"Sporter\"" = /obj/item/gun/ballistic/automatic/m12_sporter,
+		"Rifle - Model 13 \"Larker\"" = /obj/item/gun/ballistic/automatic/m12_sporter/mod,
+		"Rifle - Model 23 Woodsman" = /obj/item/gun/ballistic/automatic/marksman/woodsman,
+		"Rifle - Model 15 Super Sporter" = /obj/item/gun/ballistic/automatic/m15,
+		"Shotgun - Model 11 \"Buckmaster\"" = /obj/item/gun/ballistic/shotgun/automatic/m11,
+	)
+
+/obj/machinery/vending/security/marine/debug/serene
+	name = "\improper nanotrasen sharplite gun vendor"
+	products = list(
+		/obj/item/gun_voucher = 10,
+		/obj/item/ammo_box/magazine/m17 = 10,
+		/obj/item/ammo_box/magazine/m20_auto_elite = 10,
+		/obj/item/ammo_box/magazine/m12_sporter = 10,
+		/obj/item/ammo_box/magazine/m23 = 10,
+		/obj/item/ammo_box/magazine/m15 = 10,
+		/obj/item/ammo_box/magazine/internal/shot/buckmaster = 10,
+		)
+
+	voucher_items = list(
+		"Pistol - Model 17 \"Micro Target\"" = /obj/item/gun/ballistic/automatic/pistol/m17,
+		"Pistol - Model 20 \"Auto Elite\"" = /obj/item/gun/ballistic/automatic/pistol/m20_auto_elite,
+		"Rifle - Model 12 \"Sporter\"" = /obj/item/gun/ballistic/automatic/m12_sporter,
+		"Rifle - Model 13 \"Larker\"" = /obj/item/gun/ballistic/automatic/m12_sporter/mod,
+		"Rifle - Model 23 Woodsman" = /obj/item/gun/ballistic/automatic/marksman/woodsman,
+		"Rifle - Model 15 Super Sporter" = /obj/item/gun/ballistic/automatic/m15,
+		"Shotgun - Model 11 \"Buckmaster\"" = /obj/item/gun/ballistic/shotgun/automatic/m11,
+	)
+
+/*
+/obj/item/gun/ballistic/revolver/viper/indie
+/obj/item/gun/ballistic/automatic/smg/cobra/indie
+/obj/item/gun/ballistic/automatic/assault/hydra/indie
+/obj/item/gun/ballistic/automatic/marksman/boomslang/indie
+/obj/item/gun/ballistic/automatic/marksman/f4/indie
+*/
+
+/obj/machinery/vending/security/marine/debug/frontier
+	name = "\improper nanotrasen sharplite gun vendor"
+	products = list(
+		/obj/item/gun_voucher = 10,
+		/obj/item/ammo_box/magazine/m9mm_mauler = 10,
+		/obj/item/ammo_box/magazine/m9mm_mauler/extended = 10,
+		/obj/item/ammo_box/magazine/spitter_9mm = 10,
+		/obj/item/ammo_box/magazine/c22lr_pounder_pan = 10,
+		/obj/item/ammo_box/magazine/skm_762_40 = 10,
+		/obj/item/ammo_box/magazine/skm_762_40/extended = 4,
+		/obj/item/ammo_box/magazine/skm_762_40/drum = 4,
+		/obj/item/ammo_box/magazine/mower_lmg_308 = 10,
+		/obj/item/ammo_box/magazine/m12g_slammer = 10,
+		/obj/item/ammo_box/magazine/m12_shredder = 4,
+		/obj/item/ammo_casing/energy/lasergun/eoehoma/wasp = 10,
+		)
+
+	voucher_items = list(
+		"Pistol - Mauler" = /obj/item/gun/ballistic/automatic/pistol/mauler/regular,
+		"Machine-Pistol - Mauler" = /obj/item/gun/ballistic/automatic/pistol/mauler,
+		"SMG - Spitter" = /obj/item/gun/ballistic/automatic/pistol/spitter,
+		"SMG - Pounder" = /obj/item/gun/ballistic/automatic/smg/pounder,
+		"SMG - SKM-24u" = /obj/item/gun/ballistic/automatic/hmg/skm_lmg,
+		"Rifle - SKM-24u" = /obj/item/gun/ballistic/automatic/hmg/skm_lmg,
+		"HMG - Mower" = /obj/item/gun/ballistic/automatic/hmg/mower,
+		"Shotgun - Slammer" = /obj/item/gun/ballistic/shotgun/automatic/slammer,
+		"Heavy-Shotgun - Shredder" = /obj/item/gun/ballistic/automatic/hmg/shredder,
+		"Rocketlauncher - Hammer" = /obj/item/gun/ballistic/rocketlauncher/oneshot,
+		"Rocketlauncher - Hammer-DP" = /obj/item/gun/ballistic/rocketlauncher/oneshot/hedp,
+		"E-SMG - Wasp" = /obj/item/gun/energy/laser/wasp,
+	)
+
+
+/obj/machinery/vending/security/marine/debug/kalix
+	name = "\improper Etherbor gun vendor"
+	products = list(
+		/obj/item/gun_voucher = 10,
+		/obj/item/stock_parts/cell/gun/kalix = 10,
+		/obj/item/stock_parts/cell/gun/pgf = 10,
+		)
+
+	voucher_items = list(
+		"Etherbor BG-12" = /obj/item/gun/energy/kalix,
+		"Etherbor VG-F3" = /obj/item/gun/energy/kalix/nock,
+		"Etherbor VG-A5" = /obj/item/gun/energy/kalix/pgf/nock,
+		"Etherbor BG-16" = /obj/item/gun/energy/kalix/pgf,
+		"Etherbor SG-8" = /obj/item/gun/energy/kalix/pistol,
+		"Etherbor BGC-10" = /obj/item/gun/energy/kalix/pgf/medium,
+		"Etherbor HBG-7" = /obj/item/gun/energy/kalix/pgf/heavy,
+		"Etherbor HBG-7L" = /obj/item/gun/energy/kalix/pgf/heavy/sniper,
+	)
+
+/obj/machinery/vending/security/marine/debug/kalix
+	name = "\improper Etherbor gun vendor"
+	products = list(
+		/obj/item/gun_voucher = 10,
+		/obj/item/stock_parts/cell/gun/kalix = 10,
+		/obj/item/stock_parts/cell/gun/pgf = 10,
+		)
+
+	voucher_items = list(
+		"Etherbor BG-12" = /obj/item/gun/energy/kalix,
+		"Etherbor VG-F3" = /obj/item/gun/energy/kalix/nock,
+		"Etherbor VG-A5" = /obj/item/gun/energy/kalix/pgf/nock,
+		"Etherbor BG-16" = /obj/item/gun/energy/kalix/pgf,
+		"Etherbor SG-8" = /obj/item/gun/energy/kalix/pistol,
+		"Etherbor BGC-10" = /obj/item/gun/energy/kalix/pgf/medium,
+		"Etherbor HBG-7" = /obj/item/gun/energy/kalix/pgf/heavy,
+		"Etherbor HBG-7L" = /obj/item/gun/energy/kalix/pgf/heavy/sniper,
+	)
+
+/obj/machinery/vending/security/marine/debug/eoehoma
+	name = "\improper Etherbor gun vendor"
+	products = list(
+		/obj/item/gun_voucher = 10,
+		/obj/item/ammo_box/magazine/e40 = 10,
+		/obj/item/stock_parts/cell/gun/large = 10,
+		)
+
+	voucher_items = list(
+		"E-40 Hybrid Rifle" = /obj/item/gun/ballistic/automatic/assault/e40,
+		"secondary e40 laser gun" = /obj/item/gun/energy/laser/e40_laser_secondary,
+		"E-10 laser pistol" = /obj/item/gun/energy/laser/e10,
+		"E-11 hybrid energy rifle" = /obj/item/gun/energy/e_gun/e11,
+		"E-50 energy emitter" = /obj/item/gun/energy/laser/e50,
+		"E-60 personal defense disabler" = /obj/item/gun/energy/disabler/e60,
+	)
+
+/obj/machinery/vending/security/marine/debug/clip
+	name = "\improper Clip gun vendor"
+	products = list(
+		/obj/item/gun_voucher = 10,
+		/obj/item/stock_parts/cell/gun/kalix = 10,
+		/obj/item/stock_parts/cell/gun/pgf = 10,
+		/obj/item/stock_parts/cell/gun = 10,
+		/obj/item/stock_parts/cell/gun/upgraded = 10,
+		/obj/item/ammo_box/magazine/cm23 = 10,
+		/obj/item/ammo_box/magazine/m9mm_cm70 = 10,
+		/obj/item/ammo_box/magazine/cm357 = 10,
+		/obj/item/ammo_box/magazine/cm5_9mm = 10,
+		/obj/item/ammo_box/magazine/f4_308 = 10,
+		/obj/item/ammo_box/magazine/f90 = 10,
+		/obj/item/ammo_box/magazine/p16 = 10,
+		/obj/item/ammo_box/magazine/cm40_762_40_box = 10,
+		/obj/item/ammo_box/magazine/rottweiler_308_box = 10,
+		/obj/item/ammo_box/magazine/cm15_12g = 10,
+		)
+
+	voucher_items = list(
+		"ECM-6" = /obj/item/gun/energy/kalix/clip,
+		"ECM-1" = /obj/item/gun/energy/kalix/clip/old,
+		"ECM-50" = /obj/item/gun/energy/laser/e50/clip,
+		"CM-23" = /obj/item/gun/ballistic/automatic/pistol/cm23,
+		"CM-70 machine pistol" = /obj/item/gun/ballistic/automatic/pistol/cm70,
+		"CM-357" = /obj/item/gun/ballistic/automatic/pistol/cm357,
+		"CM-5" = /obj/item/gun/ballistic/automatic/smg/cm5,
+		"CM-5c" = /obj/item/gun/ballistic/automatic/smg/cm5/compact,
+		"CM-F4" = /obj/item/gun/ballistic/automatic/marksman/f4,
+		"CM-F90" = /obj/item/gun/ballistic/automatic/marksman/f90,
+		"CM-82" = /obj/item/gun/ballistic/automatic/assault/cm82,
+		"CM-24" = /obj/item/gun/ballistic/automatic/assault/skm/cm24,
+		"CM-40" = /obj/item/gun/ballistic/automatic/hmg/cm40,
+		"KM-05 Rottweiler" = /obj/item/gun/ballistic/automatic/hmg/rottweiler,
+		"CM-15" = /obj/item/gun/ballistic/shotgun/cm15,
+	)
