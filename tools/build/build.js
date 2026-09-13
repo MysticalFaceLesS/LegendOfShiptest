@@ -55,25 +55,15 @@ export const NoWarningParameter = new Juke.Parameter({
 import { execSync } from "child_process";
 
 export const DmMapsIncludeTarget = new Juke.Target({
-  parameters: [DefineParameter],
-  executes: async ({ get }) => {
-    // 1. Базовые обязательные карты
+  executes: async () => {
+    // 1. Только самый легкий базовый набор карт (экономит оперативную память CI)
     const folders = new Set([
       ...Juke.glob("_maps/outpost/**/*.dmm"),
       ...Juke.glob("_maps/templates/**/*.dmm"),
       ...Juke.glob("_maps/_mod_celadon/map_files/centcomm_ship.dmm"),
     ]);
 
-    const isAllMaps = get(DefineParameter).includes("ALL_MAPS");
-
-    if (isAllMaps) {
-      // Загружаем все карты мода, как и требует ALL_MAPS
-      console.log("[Smart Maps] ALL_MAPS enabled, loading mod maps...");
-      Juke.glob("_maps/_mod_celadon/**/*.dmm").forEach(file => folders.add(file));
-    }
-
-    // 2. ВСЕГДА дополнительно проверяем git diff, чтобы карты из текущего PR 
-    // гарантированно попали в компиляцию (даже при ALL_MAPS)
+    // 2. Добавляем исключительно те карты (.dmm), которые изменены в текущем PR
     try {
       let gitDiff = "";
       try {
@@ -87,11 +77,11 @@ export const DmMapsIncludeTarget = new Juke.Target({
       for (const file of changedFiles) {
         if (fs.existsSync(file)) {
           folders.add(file);
-          console.log(`[Smart Maps] Force-included PR map: ${file}`);
+          console.log(`[Smart Maps] Added PR map: ${file}`);
         }
       }
     } catch (e) {
-      console.log("[Smart Maps] Could not fetch git diff.");
+      console.log("[Smart Maps] Could not fetch git diff, using base maps only.");
     }
 
     const content =
