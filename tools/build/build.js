@@ -56,32 +56,43 @@ import { execSync } from "child_process";
 
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
-    // 1. Только самый легкий базовый набор карт (экономит оперативную память CI)
     const folders = new Set([
       ...Juke.glob("_maps/outpost/**/*.dmm"),
       ...Juke.glob("_maps/templates/**/*.dmm"),
       ...Juke.glob("_maps/_mod_celadon/map_files/centcomm_ship.dmm"),
     ]);
 
-    // 2. Добавляем исключительно те карты (.dmm), которые изменены в текущем PR
     try {
-      let gitDiff = "";
+      let gitOutput = "";
+      
+      // Пробуем разные способы получить измененные файлы в CI и локально
       try {
-        gitDiff = execSync("git diff --name-only origin/beta-dev HEAD", { encoding: "utf-8" });
+        gitOutput = execSync("git diff --name-only origin/beta-dev HEAD", { encoding: "utf-8" });
       } catch {
-        gitDiff = execSync("git diff --name-only HEAD~1 HEAD", { encoding: "utf-8" });
+        try {
+          gitOutput = execSync("git diff --name-only HEAD~1 HEAD", { encoding: "utf-8" });
+        } catch {
+          gitOutput = execSync("git status --porcelain", { encoding: "utf-8" });
+        }
       }
 
-      const changedFiles = gitDiff.split("\n").filter(file => file.endsWith(".dmm"));
+      console.log("[Smart Maps] Raw git output:\n", gitOutput);
 
-      for (const file of changedFiles) {
-        if (fs.existsSync(file)) {
-          folders.add(file);
-          console.log(`[Smart Maps] Added PR map: ${file}`);
+      const lines = gitOutput.split("\n");
+      for (const line of lines) {
+        // Убираем возможные префиксы статуса из git status (вроде 'M ', '?? ')
+        const file = line.replace(/^[AMDR\?\s]+/, "").trim();
+        
+        if (file && file.endsWith(".dmm")) {
+          // Если файл существует локально, добавляем его
+          if (fs.existsSync(file)) {
+            folders.add(file);
+            console.log(`[Smart Maps] Successfully added PR map: ${file}`);
+          }
         }
       }
     } catch (e) {
-      console.log("[Smart Maps] Could not fetch git diff, using base maps only.");
+      console.log("[Smart Maps] Failed to parse git changes:", e.message);
     }
 
     const content =
