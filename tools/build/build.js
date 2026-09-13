@@ -63,36 +63,25 @@ export const DmMapsIncludeTarget = new Juke.Target({
     ]);
 
     try {
-      let gitOutput = "";
-      
-      // Пробуем разные способы получить измененные файлы в CI и локально
-      try {
-        gitOutput = execSync("git diff --name-only origin/beta-dev HEAD", { encoding: "utf-8" });
-      } catch {
-        try {
-          gitOutput = execSync("git diff --name-only HEAD~1 HEAD", { encoding: "utf-8" });
-        } catch {
-          gitOutput = execSync("git status --porcelain", { encoding: "utf-8" });
-        }
-      }
-
-      console.log("[Smart Maps] Raw git output:\n", gitOutput);
+      // Используем git status --porcelain, который всегда видит измененные файлы в текущей ветке PR
+      const gitOutput = execSync("git status --porcelain", { encoding: "utf-8" });
+      console.log("[Smart Maps] Git status output:\n", gitOutput);
 
       const lines = gitOutput.split("\n");
       for (const line of lines) {
-        // Убираем возможные префиксы статуса из git status (вроде 'M ', '?? ')
+        // Извлекаем путь к файлу (обрезаем статусы вроде 'M ', 'A ', '?? ')
         const file = line.replace(/^[AMDR\?\s]+/, "").trim();
         
         if (file && file.endsWith(".dmm")) {
-          // Если файл существует локально, добавляем его
+          // Если файл существует и находится в папке карт/_mod_celadon
           if (fs.existsSync(file)) {
             folders.add(file);
-            console.log(`[Smart Maps] Successfully added PR map: ${file}`);
+            console.log(`[Smart Maps] Added map from git status: ${file}`);
           }
         }
       }
     } catch (e) {
-      console.log("[Smart Maps] Failed to parse git changes:", e.message);
+      console.log("[Smart Maps] Could not read git status:", e.message);
     }
 
     const content =
