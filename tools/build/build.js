@@ -52,26 +52,62 @@ export const NoWarningParameter = new Juke.Parameter({
   alias: "NW",
 });
 
+import { execSync } from "child_process";
+
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
-    const folders = [
+    // Базовые обязательные карты
+    const folders = new Set([
       ...Juke.glob("_maps/outpost/**/*.dmm"),
-      // [CELADON-EDIT] - CELADON_CONFIGS_MAPS
-      // ...Juke.glob("_maps/RandomRuins/**/*.dmm"),
-      // ...Juke.glob("_maps/shuttles/**/*.dmm"), // CELADON-EDIT - ORIGINAL
-      ...Juke.glob("_maps/_mod_celadon/RandomRuins/**/*.dmm"),
-      ...Juke.glob("_maps/_mod_celadon/shuttles/**/*.dmm"),
-      // [/CELADON-EDIT]
       ...Juke.glob("_maps/templates/**/*.dmm"),
-    ];
+      ...Juke.glob("_maps/_mod_celadon/map_files/centcomm_ship.dmm"),
+    ]);
+
+    // Пытаемся найти карты, которые были изменены в текущем PR/ветке через git
+    try {
+      const gitDiff = execSync("git diff --name-only origin/beta-dev HEAD", { encoding: "utf-8" });
+      const changedFiles = gitDiff.split("\n").filter(file => file.endsWith(".dmm"));
+
+      for (const file of changedFiles) {
+        if (fs.existsSync(file)) {
+          folders.add(file);
+          console.log(`[Smart Maps] Added modified map from PR: ${file}`);
+        }
+      }
+    } catch (e) {
+      console.log("[Smart Maps] Could not fetch git diff, falling back to core maps.");
+    }
+
     const content =
-      folders
+      Array.from(folders)
         .map((file) => file.replace("_maps/", ""))
         .map((file) => `#include "${file}"`)
         .join("\n") + "\n";
+
     fs.writeFileSync("_maps/templates.dm", content);
   },
 });
+
+// export const DmMapsIncludeTarget = new Juke.Target({
+//   executes: async () => {
+//     const folders = [
+//       ...Juke.glob("_maps/outpost/**/*.dmm"),
+//       // [CELADON-EDIT] - CELADON_CONFIGS_MAPS
+//       // ...Juke.glob("_maps/RandomRuins/**/*.dmm"),
+//       // ...Juke.glob("_maps/shuttles/**/*.dmm"), // CELADON-EDIT - ORIGINAL
+//       ...Juke.glob("_maps/_mod_celadon/RandomRuins/**/*.dmm"),
+//       ...Juke.glob("_maps/_mod_celadon/shuttles/**/*.dmm"),
+//       // [/CELADON-EDIT]
+//       ...Juke.glob("_maps/templates/**/*.dmm"),
+//     ];
+//     const content =
+//       folders
+//         .map((file) => file.replace("_maps/", ""))
+//         .map((file) => `#include "${file}"`)
+//         .join("\n") + "\n";
+//     fs.writeFileSync("_maps/templates.dm", content);
+//   },
+// });
 
 export const DmTarget = new Juke.Target({
   parameters: [
