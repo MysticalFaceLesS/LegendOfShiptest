@@ -56,25 +56,40 @@ import { execSync } from "child_process";
 
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
-    // 1. Базовый минимальный набор карт
+    // 1. Базовый минимальный набор карт (остается всегда)
     const folders = new Set([
       ...Juke.glob("_maps/outpost/**/*.dmm"),
       ...Juke.glob("_maps/templates/**/*.dmm"),
       ...Juke.glob("_maps/_mod_celadon/map_files/centcomm_ship.dmm"),
     ]);
 
-    // 2. Автоматически находим ВСЕ руины и шаттлы из вашего мода (_mod_celadon),
-    // но проверяем их вес/наличие. Полноценный набор руин весит копейки и не палит память!
-    const modMaps = Juke.glob("_maps/_mod_celadon/**/*.dmm");
-    
-    for (const file of modMaps) {
-      if (fs.existsSync(file)) {
-        // Исключаем centcomm_ship, так как он уже добавлен выше
-        if (!file.includes("centcomm_ship.dmm")) {
-          folders.add(file);
-          console.log(`[Smart Maps] Included mod map: ${file}`);
+    try {
+      // Пытаемся получить список измененных файлов из последнего коммита или через diff с origin/beta-dev (если доступно)
+      let gitOutput = "";
+      try {
+        gitOutput = execSync("git diff --name-only HEAD^ HEAD", { encoding: "utf-8" });
+      } catch {
+        try {
+          gitOutput = execSync("git diff --name-only origin/beta-dev HEAD", { encoding: "utf-8" });
+        } catch {
+          gitOutput = execSync("git status --porcelain", { encoding: "utf-8" });
         }
       }
+
+      const lines = gitOutput.split("\n");
+      for (const line of lines) {
+        const file = line.replace(/^[AMDR\?\s]+/, "").trim();
+        
+        // Добавляем ТОЛЬКО те файлы из _mod_celadon, которые реально изменены в этом PR
+        if (file && file.startsWith("_maps/_mod_celadon/") && file.endsWith(".dmm")) {
+          if (fs.existsSync(file)) {
+            folders.add(file);
+            console.log(`[Smart Maps] Included PR mod map: ${file}`);
+          }
+        }
+      }
+    } catch (e) {
+      console.log("[Smart Maps] Git check skipped:", e.message);
     }
 
     const content =
