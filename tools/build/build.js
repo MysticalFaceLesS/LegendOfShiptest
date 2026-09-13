@@ -66,26 +66,24 @@ export const DmMapsIncludeTarget = new Juke.Target({
     try {
       let gitOutput = "";
       
-      // Собираем измененные файлы из последнего коммита или статуса
+      // Сначала проверяем локальные изменения
       try {
         gitOutput = execSync("git status --porcelain", { encoding: "utf-8" });
       } catch {}
 
+      // Если локально чисто, берем файлы из последнего коммита через diff-tree (не захватывает мусор)
       if (!gitOutput.trim()) {
         try {
-          gitOutput = execSync("git show --name-only --pretty=format: HEAD", { encoding: "utf-8" });
+          gitOutput = execSync("git diff-tree --no-commit-id --name-only -r HEAD", { encoding: "utf-8" });
         } catch {}
       }
 
       const lines = gitOutput.split("\n");
       for (const line of lines) {
-        // Очищаем путь от служебных символов git
+        // Очищаем путь от служебных символов git status (если они есть)
         const file = line.replace(/^[AMDR\?\s]+/, "").trim();
         
-        // ЖЕСТКИЙ ФИЛЬТР: 
-        // 1. Файл должен быть из вашего мода: _maps/_mod_celadon/
-        // 2. Это должен быть именно файл карты (.dmm)
-        // 3. Он НЕ должен быть centcomm_ship (он уже добавлен выше)
+        // ЖЕСТКИЙ ФИЛЬТР: только измененные .dmm файлы из вашего мода
         if (
           file && 
           file.startsWith("_maps/_mod_celadon/") && 
