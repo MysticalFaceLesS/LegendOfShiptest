@@ -56,7 +56,7 @@ import { execSync } from "child_process";
 
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
-    // 1. Базовый минимальный набор карт
+    // 1. Базовый минимальный набор карт (остается всегда)
     const folders = new Set([
       ...Juke.glob("_maps/outpost/**/*.dmm"),
       ...Juke.glob("_maps/templates/**/*.dmm"),
@@ -66,26 +66,32 @@ export const DmMapsIncludeTarget = new Juke.Target({
     try {
       let gitOutput = "";
       
-      // Сначала пробуем git status (на случай незакоммиченных файлов)
+      // Собираем измененные файлы из последнего коммита или статуса
       try {
         gitOutput = execSync("git status --porcelain", { encoding: "utf-8" });
       } catch {}
 
-      // Если через статус пусто, пробуем узнать файлы из последнего коммита через git show (работает даже при depth: 1)
       if (!gitOutput.trim()) {
         try {
           gitOutput = execSync("git show --name-only --pretty=format: HEAD", { encoding: "utf-8" });
         } catch {}
       }
 
-      console.log("[Smart Maps] Git resolved output:\n", gitOutput);
-
       const lines = gitOutput.split("\n");
       for (const line of lines) {
+        // Очищаем путь от служебных символов git
         const file = line.replace(/^[AMDR\?\s]+/, "").trim();
         
-        // Добавляем ТОЛЬКО те файлы из _mod_celadon, которые затронуты в этом коммите/пра
-        if (file && file.startsWith("_maps/_mod_celadon/") && file.endsWith(".dmm")) {
+        // ЖЕСТКИЙ ФИЛЬТР: 
+        // 1. Файл должен быть из вашего мода: _maps/_mod_celadon/
+        // 2. Это должен быть именно файл карты (.dmm)
+        // 3. Он НЕ должен быть centcomm_ship (он уже добавлен выше)
+        if (
+          file && 
+          file.startsWith("_maps/_mod_celadon/") && 
+          file.endsWith(".dmm") &&
+          !file.includes("centcomm_ship.dmm")
+        ) {
           if (fs.existsSync(file)) {
             folders.add(file);
             console.log(`[Smart Maps] Included PR mod map: ${file}`);
