@@ -56,7 +56,7 @@ import { execSync } from "child_process";
 
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
-    // 1. Базовый минимальный набор карт (остается всегда)
+    // 1. Базовый минимальный набор карт
     const folders = new Set([
       ...Juke.glob("_maps/outpost/**/*.dmm"),
       ...Juke.glob("_maps/templates/**/*.dmm"),
@@ -64,23 +64,27 @@ export const DmMapsIncludeTarget = new Juke.Target({
     ]);
 
     try {
-      // Пытаемся получить список измененных файлов из последнего коммита или через diff с origin/beta-dev (если доступно)
       let gitOutput = "";
+      
+      // Сначала пробуем git status (на случай незакоммиченных файлов)
       try {
-        gitOutput = execSync("git diff --name-only HEAD^ HEAD", { encoding: "utf-8" });
-      } catch {
+        gitOutput = execSync("git status --porcelain", { encoding: "utf-8" });
+      } catch {}
+
+      // Если через статус пусто, пробуем узнать файлы из последнего коммита через git show (работает даже при depth: 1)
+      if (!gitOutput.trim()) {
         try {
-          gitOutput = execSync("git diff --name-only origin/beta-dev HEAD", { encoding: "utf-8" });
-        } catch {
-          gitOutput = execSync("git status --porcelain", { encoding: "utf-8" });
-        }
+          gitOutput = execSync("git show --name-only --pretty=format: HEAD", { encoding: "utf-8" });
+        } catch {}
       }
+
+      console.log("[Smart Maps] Git resolved output:\n", gitOutput);
 
       const lines = gitOutput.split("\n");
       for (const line of lines) {
         const file = line.replace(/^[AMDR\?\s]+/, "").trim();
         
-        // Добавляем ТОЛЬКО те файлы из _mod_celadon, которые реально изменены в этом PR
+        // Добавляем ТОЛЬКО те файлы из _mod_celadon, которые затронуты в этом коммите/пра
         if (file && file.startsWith("_maps/_mod_celadon/") && file.endsWith(".dmm")) {
           if (fs.existsSync(file)) {
             folders.add(file);
@@ -89,7 +93,7 @@ export const DmMapsIncludeTarget = new Juke.Target({
         }
       }
     } catch (e) {
-      console.log("[Smart Maps] Git check skipped:", e.message);
+      console.log("[Smart Maps] Git parse warning:", e.message);
     }
 
     const content =
