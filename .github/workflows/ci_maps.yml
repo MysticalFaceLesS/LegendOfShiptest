@@ -31,16 +31,6 @@ jobs:
       - name: Install BYOND
         if: steps.cache-byond.outputs.cache-hit != 'true'
         run: bash tools/ci/install_byond.sh
-        
-      - name: Increase Swap Space (16GB)
-        run: |
-          sudo swapoff -a
-          sudo rm -f /swapfile
-          sudo dd if=/dev/zero of=/swapfile bs=1G count=16
-          sudo chmod 600 /swapfile
-          sudo mkswap /swapfile
-          sudo swapon /swapfile
-          free -h
           
       - name: Compile All Maps
         run: |
