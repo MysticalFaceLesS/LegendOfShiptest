@@ -31,6 +31,14 @@ jobs:
       - name: Install BYOND
         if: steps.cache-byond.outputs.cache-hit != 'true'
         run: bash tools/ci/install_byond.sh
+        
+      - name: Create Swap Space (8GB)
+        run: |
+          sudo fallocate -l 8G /swapfile
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
+          free -h
 
       - name: Compile All Maps
         run: |
