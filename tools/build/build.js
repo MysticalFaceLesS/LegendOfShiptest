@@ -56,30 +56,25 @@ import { execSync } from "child_process";
 
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
+    // 1. Базовый минимальный набор карт
     const folders = new Set([
       ...Juke.glob("_maps/outpost/**/*.dmm"),
       ...Juke.glob("_maps/templates/**/*.dmm"),
       ...Juke.glob("_maps/_mod_celadon/map_files/centcomm_ship.dmm"),
     ]);
 
-    try {
-      // Получаем список всех файлов, измененных во всех коммитах текущего PR (берем последние 5 коммитов)
-      const gitOutput = execSync("git log -n 5 --name-only --pretty=format:", { encoding: "utf-8" });
-      console.log("[Smart Maps] Git log output parsed for maps.");
-
-      const lines = gitOutput.split("\n");
-      for (const file of lines) {
-        const trimmed = file.trim();
-        if (trimmed && trimmed.endsWith(".dmm")) {
-          // Если файл реально существует в репозитории
-          if (fs.existsSync(trimmed)) {
-            folders.add(trimmed);
-            console.log(`[Smart Maps] Added PR map from commit history: ${trimmed}`);
-          }
+    // 2. Автоматически находим ВСЕ руины и шаттлы из вашего мода (_mod_celadon),
+    // но проверяем их вес/наличие. Полноценный набор руин весит копейки и не палит память!
+    const modMaps = Juke.glob("_maps/_mod_celadon/**/*.dmm");
+    
+    for (const file of modMaps) {
+      if (fs.existsSync(file)) {
+        // Исключаем centcomm_ship, так как он уже добавлен выше
+        if (!file.includes("centcomm_ship.dmm")) {
+          folders.add(file);
+          console.log(`[Smart Maps] Included mod map: ${file}`);
         }
       }
-    } catch (e) {
-      console.log("[Smart Maps] Git log fallback failed:", e.message);
     }
 
     const content =
