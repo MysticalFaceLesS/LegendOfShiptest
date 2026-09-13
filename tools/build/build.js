@@ -63,25 +63,24 @@ export const DmMapsIncludeTarget = new Juke.Target({
     ]);
 
     try {
-      // Используем git status --porcelain, который всегда видит измененные файлы в текущей ветке PR
+      // Безопасный способ получить список измененных/новых файлов в CI (через git status)
       const gitOutput = execSync("git status --porcelain", { encoding: "utf-8" });
       console.log("[Smart Maps] Git status output:\n", gitOutput);
 
       const lines = gitOutput.split("\n");
       for (const line of lines) {
-        // Извлекаем путь к файлу (обрезаем статусы вроде 'M ', 'A ', '?? ')
+        // Убираем служебные статусы git (вроде 'M ', '?? ', 'A ')
         const file = line.replace(/^[AMDR\?\s]+/, "").trim();
         
         if (file && file.endsWith(".dmm")) {
-          // Если файл существует и находится в папке карт/_mod_celadon
           if (fs.existsSync(file)) {
             folders.add(file);
-            console.log(`[Smart Maps] Added map from git status: ${file}`);
+            console.log(`[Smart Maps] Added changed map: ${file}`);
           }
         }
       }
     } catch (e) {
-      console.log("[Smart Maps] Could not read git status:", e.message);
+      console.log("[Smart Maps] Git status failed:", e.message);
     }
 
     const content =
