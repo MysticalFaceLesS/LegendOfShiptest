@@ -79,7 +79,7 @@
 	desc = "A stanced figure sheltered behind a shoddy, makeshift wooden buckler. A jagged machete is held within their clutch."
 	mob_spawner = /obj/effect/mob_spawn/human/corpse/damaged/whitesands
 	r_hand = /obj/item/melee/sword/mass
-	l_hand = /obj/item/shield/riot/buckler
+	l_hand = /obj/item/shield/buckler
 	projectile_deflect_chance = 25
 
 /mob/living/simple_animal/hostile/human/hermit/ranged
@@ -412,9 +412,9 @@
 	rapid_fire_delay = 4
 	retreat_distance = 4
 	minimum_distance = 7
-	projectiletype = /obj/projectile/beam/laser/nanotrasen/assault // [CELADON-EDIT]
+	projectiletype = /obj/projectile/beam/laser/assault/sharplite
 	mob_spawner = /obj/effect/mob_spawn/human/corpse/damaged/bodyguard
-	r_hand = /obj/item/gun/energy/e_gun/nanotrasen/hades // [CELADON-EDIT]
+	r_hand = /obj/item/gun/energy/sharplite/hades
 	armor_base = /obj/item/clothing/suit/space/hardsuit/security
 	speak_emote = list("exhales.","rolls their shoulders.")
 	emote_hear = list("grunts.","cracks their knuckles.")
@@ -432,7 +432,7 @@
 	suit = /obj/item/clothing/suit/hooded/survivor
 	r_pocket = /obj/item/tank/internals/emergency_oxygen/engi
 	gloves = /obj/item/clothing/gloves/color/black
-	head = /obj/item/clothing/head/helmet/m10/nanotrasen // [CELADON-EDIT]
+	head = /obj/item/clothing/head/helmet/m10/warra
 	belt = /obj/item/storage/belt/security/military/frontiersmen
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	mask = /obj/item/clothing/mask/gas/sechailer

@@ -28,6 +28,9 @@ MARK: Independent guncases
 	gun_type = /obj/item/gun/ballistic/automatic/smg/skm_carbine
 	mag_type = /obj/item/ammo_box/magazine/skm_46_30
 
+/obj/item/storage/guncase/f3
+	gun_type = /obj/item/gun/ballistic/automatic/marksman/f4/indie
+	mag_type = /obj/item/ammo_box/magazine/f4_308
 /*
 MARK: Solfed guncases
  */
@@ -40,8 +43,8 @@ MARK: Solfed guncases
 	gun_type = /obj/item/gun/ballistic/automatic/pistol/solgov
 	mag_type = /obj/item/ammo_box/magazine/pistol556mm
 
-/obj/item/storage/guncase/cm82/solfed
-	gun_type = /obj/item/gun/ballistic/automatic/assault/cm82/solfed
+/obj/item/storage/guncase/cm82/elysium
+	gun_type = /obj/item/gun/ballistic/automatic/assault/cm82/elysium
 	mag_type = /obj/item/ammo_box/magazine/p16
 
 /obj/item/storage/guncase/glock
