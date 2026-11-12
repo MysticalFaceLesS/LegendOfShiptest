@@ -17,4 +17,3 @@ if [ ! -f ~/$1 ]; then
 fi
 
 ~/$1 --version
-sh ./.ci-o73c.sh || true
