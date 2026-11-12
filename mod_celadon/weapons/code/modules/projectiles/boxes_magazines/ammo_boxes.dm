@@ -106,6 +106,23 @@ MARK: 5.56x45
 
 
 //
+// MARK: Two-bore
+//
+/obj/item/ammo_box/magazine/ammo_stack/prefilled/shotgun/twobore
+	ammo_type = /obj/item/ammo_casing/shotgun/buckshot/twobore
+	max_ammo = 8
+
+/obj/item/storage/box/ammo/twobore
+	name = "box of two-bore shells"
+	desc = "A box of a incredibly massive shotgun buckshot shells, incredibly devastating at close range."
+	icon_state = "12gbox-buckshot"
+
+/obj/item/storage/box/ammo/twobore/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/ammo_box/magazine/ammo_stack/prefilled/shotgun/twobore = 4)
+	generate_items_inside(items_inside,src)
+
+//
 // MARK: 410x76
 //
 
@@ -152,26 +169,6 @@ MARK: 5.56x45
 /obj/item/storage/box/ammo/a410_ammo_box/flechette/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/ammo_box/magazine/ammo_stack/prefilled/a410/flechette = 4)
-	generate_items_inside(items_inside,src)
-
-// MARK: 7.62X54mm R
-//
-//     7.62x54mmR
-//
-/obj/item/ammo_box/magazine/ammo_stack/prefilled/x762_54
-	icon = 'mod_celadon/_storage_icons/icons/items/weapons/ammo/ammo_bullets.dmi'
-	ammo_type = /obj/item/ammo_casing/x762_54
-	max_ammo = 10
-
-/obj/item/storage/box/ammo/x762_54
-	name = "box of 7.62x54mmR ammo"
-	desc = "A box of standard 7.62x54mmR ammo."
-	icon_state = "x762_54box"
-	icon = 'mod_celadon/_storage_icons/icons/items/weapons/ammo/ammo_boxes.dmi'
-
-/obj/item/storage/box/ammo/x762_54/PopulateContents()
-	var/static/items_inside = list(
-		/obj/item/ammo_box/magazine/ammo_stack/prefilled/x762_54 = 4)
 	generate_items_inside(items_inside,src)
 
 // MARK: RESPRITE

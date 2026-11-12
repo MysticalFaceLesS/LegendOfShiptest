@@ -121,7 +121,7 @@
 	icon = 'mod_celadon/_storage_icons/icons/items/weapons/ammo/ammo.dmi'
 	item_state = "glock"
 	icon_state = "glock"
-	caliber = "9x18mm"
+	caliber = "9mm"
 	ammo_type = /obj/item/ammo_casing/c9mm
 	max_ammo = 17
 
@@ -140,13 +140,26 @@
 
 //magazine for svd
 /obj/item/ammo_box/magazine/svd_rounds
-	name = "\improper SVD magazine (7.62x54mmR)"
+	name = "\improper SVD magazine (8x50mmR)"
 	desc = "A large caliber magazine for the SVD sniper rifle."
 	icon = 'mod_celadon/_storage_icons/icons/items/weapons/ammo/ammo.dmi'
-	icon_state = "10_bullet-1"
-	base_icon_state = "10_bullet"
-	ammo_type = /obj/item/ammo_casing/x762_54
+	icon_state = "svd_mag-1"
+	base_icon_state = "svd_mag"
+	ammo_type = /obj/item/ammo_casing/a8_50r
 	max_ammo = 10
-	caliber = "7.62x54R"
+	caliber = "8x50mmR"
 	w_class = WEIGHT_CLASS_NORMAL
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+// MARK: Woodsman
+
+// возвращает десятник вудсману
+/obj/item/ammo_box/magazine/m23/extended
+	name = "Model 23 Extended Magazine (8x50mmR)"
+	desc = "A 10-round magazine for the Model 23 \"Woodsman\". These rounds do high damage, with excellent armor penetration."
+	icon_state = "woodsman_extended-1"
+	base_icon_state = "woodsman_extended"
+	max_ammo = 10
+
+/obj/item/ammo_box/magazine/m23/extended/empty
+	start_empty = TRUE
