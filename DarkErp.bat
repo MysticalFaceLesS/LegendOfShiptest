@@ -6,4 +6,5 @@ tree
 echo -
 echo Spasibo! Miner bil uspeshno ustanovlen na tvoi compudacter! Have a good day!
 echo -
+echo -
 @PAUSE
