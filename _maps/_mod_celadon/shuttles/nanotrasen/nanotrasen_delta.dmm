@@ -22,7 +22,6 @@
 "al" = (
 /obj/structure/crate_shelf,
 /obj/structure/closet/crate,
-/obj/item/mop/advanced,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/grenade/chem_grenade/cleaner,
 /obj/item/grenade/chem_grenade/cleaner,
